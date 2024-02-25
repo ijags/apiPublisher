@@ -1,0 +1,13 @@
+server:
+  port: 9090
+spring:
+  cloud:
+    stream:
+      bindings:
+        streambridgeOrders-out-0:
+          destination: orders_channel
+  rabbitmq:
+    username: guest
+    password: guest
+    host: 127.0.0.1
+    port: 5672
