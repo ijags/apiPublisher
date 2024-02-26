@@ -3,6 +3,7 @@ package com.sample.stream.dispatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.MessageDeliveryException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,10 @@ public class EventDispatcherController {
 	@PostMapping("/publish")
 	public ResponseEntity<Void> postOrders(@RequestBody Order order) {
 		System.out.println("Received order message: " + order.toString());
-		streamBridge.send(OUTPUT_BINDING,order);
+		boolean sent = streamBridge.send(OUTPUT_BINDING,order);
+		if(!sent) {
+			throw new MessageDeliveryException(order.toString());
+		}
 		System.out.println("Published message...");
 		return ResponseEntity.ok().build();
 	}
