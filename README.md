@@ -1,4 +1,6 @@
-Publishes messages to RabbitMQ using an REST API endpoint exposed.
+Spring Cloud Stream
+
+Publishes messages to apiConsumer project using an REST API endpoint exposed in this project.
 
 Here's the sample input message:
 
