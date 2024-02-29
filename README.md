@@ -1,11 +1,13 @@
-Spring Cloud Stream
+# Publishes message using StreamBridge
 
-Publishes messages to apiConsumer project using an REST API endpoint exposed in this project.
+## Spring Cloud Stream - RabbitMQ
+
+Publishes messages to RabbitMQ using an REST API endpoint exposed.
 
 Here's the sample input message:
 
 {
-    "orderNumber": 6,
+    "orderNumber": 2001,
     "quantity": 5,
     "productName": "Cabinets",
     "productDesc": "Cabinets and Drawers",
